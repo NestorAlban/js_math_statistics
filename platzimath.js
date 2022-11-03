@@ -54,7 +54,8 @@ PlatziMath.calcular_promedio = function calcular_promedio(array){
     const text2 = `La suma total es de ${TotalSum}.`
     const text3 = `El promedio de estos es de ${prom}.`
     const textT=text1+text2+text3
-    console.log(textT)
+    // console.log(textT)
+    // console.log(prom)
     return prom
 }
 
@@ -91,19 +92,22 @@ PlatziMath.calcular_promedio2 = function calcular_promedio2(array){
 }
 
 PlatziMath.calcular_mediana = function calcular_mediana(arrayD){
-    const array = ordenar_lista(arrayD);
-    const listaPar = validar_lista_par(array);
+    const array = PlatziMath.ordenar_lista(arrayD);
+    const listaPar = PlatziMath.validar_lista_par(array);
     if (listaPar){
         const indexMediana1 = (array.length)/2;
         const indexMediana2 = (array.length/2)-1;
-        const medianaValue = calcular_promedio([array[indexMediana1], array[indexMediana2]])
-        console.log(medianaValue);
+        const medianaValue = PlatziMath.calcular_promedio([array[indexMediana1], array[indexMediana2]])
+        // console.log('medianaValue');
+        return medianaValue
     } else{
         // const medianaImp = Math.floor(array.length/2) + 1;
         const medianaImp = (array.length+1)/2;
         const indexMediana = medianaImp-1;
-        console.log(indexMediana, array[indexMediana]);
+        // console.log(array[indexMediana]);
+        return array[indexMediana]
     }
+    
 }
 PlatziMath.calcular_moda = function calcular_moda(array){
     const arrCount = {};
@@ -117,7 +121,7 @@ PlatziMath.calcular_moda = function calcular_moda(array){
     };
 
     const newArr = Object.entries(arrCount);
-    const arrOrdenado = ordenar_lista_2d(newArr);
+    const arrOrdenado = PlatziMath.ordenar_lista_2d(newArr);
     const modaValue = arrOrdenado[arrOrdenado.length-1];
     console.log({arrCount, newArr, arrOrdenado, modaValue});
     return [modaValue, modaValue[0]]
